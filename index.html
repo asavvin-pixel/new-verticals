@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Новые вертикали высшего образования. Universal University</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fafaf7;
+    --paper:#ffffff;
+    --ink:#0a0a0a;
+    --ink-soft:#2e2e2e;
+    --ink-mute:#6a6a6a;
+    --line:#d9d6cf;
+    --line-soft:#ece9e2;
+    --panel:#f1ede4;
+    --accent:#143264;
+    --accent-soft:#e6ebf3;
+    --accent-deep:#0a1f44;
+    --warn:#a83a2a;
+    --good:#1d6a3e;
+    --hi:#c8a857;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter Tight',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-weight:400;
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--accent);color:#fff}
+
+  /* layout primitives */
+  .wrap{max-width:1280px;margin:0 auto;padding:0 56px}
+  .wrap-narrow{max-width:920px;margin:0 auto;padding:0 56px}
+  section{padding:112px 0;border-top:1px solid var(--line)}
+  section.no-border{border-top:none}
+
+  /* navigation */
+  .topnav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,250,247,0.94);
+    backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav-inner{
+    max-width:1280px;margin:0 auto;padding:18px 56px;
+    display:flex;align-items:center;justify-content:space-between;gap:32px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;font-weight:700;font-size:11px;letter-spacing:0.18em;line-height:1.1;text-transform:uppercase;color:var(--ink)}
+  .brand img{height:32px;width:auto;display:block;flex-shrink:0}
+  .brand .sub{display:block;font-size:10px;font-weight:500;color:var(--ink-mute);letter-spacing:0.16em;margin-top:3px}
+  .brand .label{display:flex;flex-direction:column;gap:3px;border-left:1px solid var(--line);padding-left:14px}
+  .brand .label span:first-child{font-size:10px;color:var(--ink-mute);letter-spacing:0.18em}
+  .brand .label span:last-child{font-size:11px;color:var(--ink);letter-spacing:0.06em;text-transform:none;font-family:'Source Serif 4',serif;font-style:italic;font-weight:400}
+  .nav-links{display:flex;gap:26px;font-size:12px;color:var(--ink-mute);letter-spacing:0.04em}
+  .nav-links a{color:inherit;text-decoration:none;transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+
+  /* typography */
+  h1,h2,h3,h4{font-family:'Inter Tight',sans-serif;letter-spacing:-0.025em;color:var(--ink)}
+  h1{font-size:84px;font-weight:800;line-height:0.96;letter-spacing:-0.04em}
+  h2{font-size:52px;font-weight:800;line-height:1.04;letter-spacing:-0.032em}
+  h3{font-size:30px;font-weight:700;line-height:1.14;letter-spacing:-0.022em}
+  h4{font-size:19px;font-weight:700;line-height:1.28;letter-spacing:-0.01em}
+  .eyebrow{
+    font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--ink-mute);margin-bottom:28px;display:block;
+  }
+  .eyebrow .num{color:var(--accent);font-weight:800;margin-right:12px;font-variant-numeric:tabular-nums}
+  p{font-size:17px;line-height:1.62;color:var(--ink-soft);max-width:66ch}
+  p + p{margin-top:18px}
+  .lead{font-size:22px;line-height:1.42;color:var(--ink);font-weight:400;max-width:60ch;letter-spacing:-0.01em}
+  .quote{
+    font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;
+    font-size:26px;line-height:1.36;color:var(--ink);
+    border-left:2px solid var(--accent);padding:6px 0 6px 28px;
+    max-width:62ch;letter-spacing:-0.005em;
+  }
+  .small{font-size:13px;color:var(--ink-mute);line-height:1.55}
+  .note{font-size:13px;color:var(--ink-mute);line-height:1.55;font-style:italic;font-family:'Source Serif 4',serif}
+
+  /* hero */
+  .hero{padding:72px 0 96px;border-top:none;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:end}
+  .hero-tag{
+    font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--ink);margin-bottom:56px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .hero-tag .bar{display:inline-block;width:48px;height:1.5px;background:var(--accent)}
+  .hero-rt{padding-bottom:8px}
+  .hero h1 em{font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;color:var(--accent);letter-spacing:-0.025em}
+  .hero-meta-row{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+    margin-top:56px;border-top:1px solid var(--ink);padding-top:24px;
+  }
+  .hero-meta-row .label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px;line-height:1.3}
+  .hero-meta-row .val{font-size:18px;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+  .hero-doc{
+    font-family:'Source Serif 4',serif;font-style:italic;font-size:15px;color:var(--ink-mute);
+    line-height:1.5;max-width:42ch;
+  }
+
+  /* tape with stats */
+  .tape{background:var(--ink);color:#fff;padding:0;margin:0}
+  .tape-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.1)}
+  .tape-cell{background:var(--ink);padding:44px 32px}
+  .tape-cell .n{font-size:52px;font-weight:800;line-height:1;letter-spacing:-0.04em;color:#fff;margin-bottom:16px;white-space:nowrap}
+  .tape-cell .n .u{color:var(--hi);font-size:0.42em;vertical-align:0.45em;letter-spacing:0;font-weight:600;margin-left:6px}
+  .tape-cell .lab{font-size:13px;line-height:1.42;color:rgba(255,255,255,0.72);max-width:24ch}
+  .tape-cell .src{font-size:10px;line-height:1.4;color:rgba(255,255,255,0.42);margin-top:14px;letter-spacing:0.04em}
+
+  /* generic columns */
+  .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+  .cols-2-wide{display:grid;grid-template-columns:5fr 7fr;gap:80px}
+  .cols-2-wide h2 + p,.cols-2-wide h2 + .lead{margin-top:0}
+  .cols-3{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+  .cols-4{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+  h2 + p, h2 + .lead, h3 + p, h3 + .lead{margin-top:20px}
+
+  /* card primitives */
+  .card{background:var(--paper);border:1px solid var(--line);padding:32px}
+  .card-soft{background:var(--panel);padding:32px}
+  .card-accent{background:var(--accent-soft);padding:32px;border-left:2px solid var(--accent)}
+  .card h4{margin-bottom:12px}
+  .card p{font-size:15px;line-height:1.58}
+
+  /* mckinsey-style chapter mark */
+  .chapter-mark{
+    display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:baseline;
+    border-bottom:1px solid var(--ink);padding-bottom:24px;margin-bottom:48px;
+  }
+  .chapter-mark .num{
+    font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;
+    font-size:64px;line-height:0.9;color:var(--accent);letter-spacing:-0.02em;
+  }
+  .chapter-mark .ttl{font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-mute)}
+  .chapter-mark .ttl .name{display:block;font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;color:var(--ink);text-transform:none;letter-spacing:-0.01em;font-size:22px;margin-top:6px}
+
+  /* signal block */
+  .signal-block{display:grid;grid-template-columns:5fr 6fr;gap:96px;align-items:start}
+  .signal-list{display:flex;flex-direction:column}
+  .signal{
+    border-top:1px solid var(--line);padding:24px 0;
+    display:grid;grid-template-columns:170px 1fr;gap:32px;align-items:start;
+  }
+  .signal:last-child{border-bottom:1px solid var(--line)}
+  .signal-key{font-size:28px;font-weight:800;line-height:1.05;letter-spacing:-0.025em;color:var(--ink);font-variant-numeric:tabular-nums}
+  .signal-key.accent{color:var(--accent)}
+  .signal-text{font-size:14px;line-height:1.55;color:var(--ink-soft)}
+  .signal-label{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:16px}
+
+  /* assumption table */
+  .assump{display:grid;grid-template-columns:36px 1.2fr 2fr 1.3fr;gap:0;border-top:1px solid var(--ink);margin-top:32px}
+  .assump-row{display:contents}
+  .assump-row > div{padding:20px 16px 20px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5}
+  .assump-row .num{font-size:13px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+  .assump-row .name{font-weight:600;color:var(--ink)}
+  .assump-row .what{color:var(--ink-soft)}
+  .assump-row .target{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+  .assump-head > div{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);padding:0 16px 12px 0;border-bottom:1px solid var(--ink)}
+
+  /* fin table */
+  .fintable{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;margin-top:24px}
+  .fintable th,.fintable td{text-align:right;padding:14px 14px;border-bottom:1px solid var(--line);font-size:14px}
+  .fintable th{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);border-bottom:1px solid var(--ink)}
+  .fintable th:first-child,.fintable td:first-child{text-align:left}
+  .fintable td:first-child{font-weight:500;color:var(--ink)}
+  .fintable tr.total td{font-weight:700;color:var(--ink);background:var(--panel);border-top:1.5px solid var(--ink)}
+  .fintable tr.sub td{color:var(--ink-mute);font-size:13px}
+
+  /* timeline / roadmap quarters */
+  .quarters{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1.5px solid var(--ink);margin-top:48px}
+  .quarter{padding:32px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .quarter:first-child{padding-left:0}
+  .quarter:last-child{border-right:none;padding-right:0}
+  .quarter .q-num{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .quarter h4{font-size:22px;margin-bottom:24px;letter-spacing:-0.015em}
+  .quarter ul{list-style:none;padding:0;margin:0}
+  .quarter li{font-size:14px;line-height:1.5;color:var(--ink-soft);padding:12px 0 12px 18px;border-top:1px solid var(--line-soft);position:relative}
+  .quarter li::before{content:"";position:absolute;left:0;top:21px;width:10px;height:1px;background:var(--ink)}
+  .quarter li:first-child{border-top:none;padding-top:0}
+  .quarter li:first-child::before{top:9px}
+
+  /* checkpoints (formerly gates) */
+  .checks{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1.5px solid var(--ink);margin-top:48px}
+  .check{padding:36px 32px;border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .check:first-child{padding-left:0}
+  .check:last-child{border-right:none;padding-right:0}
+  .check-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#fff;background:var(--ink);padding:5px 11px;margin-bottom:18px}
+  .check h4{font-size:22px;margin-bottom:8px;letter-spacing:-0.015em}
+  .check-when{font-size:13px;color:var(--ink-mute);margin-bottom:24px;font-family:'Source Serif 4',serif;font-style:italic}
+  .check-crit{margin-top:20px}
+  .check-crit .label{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px}
+  .check-crit ul{list-style:none}
+  .check-crit li{font-size:13px;line-height:1.5;color:var(--ink-soft);padding:6px 0 6px 14px;position:relative}
+  .check-crit li::before{content:"";position:absolute;left:0;top:13px;width:5px;height:5px;background:var(--accent)}
+  .check-go{margin-top:24px;padding:14px 16px;background:var(--accent-soft);font-size:13px;line-height:1.45;color:var(--ink)}
+  .check-go strong{color:var(--accent-deep)}
+
+  /* program list */
+  .pgm-list{margin-top:48px;border-top:1.5px solid var(--ink)}
+  .pgm-row{display:grid;grid-template-columns:90px 1fr 180px 140px;gap:32px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .pgm-row.head{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);padding:14px 0}
+  .pgm-row .y{font-weight:600;color:var(--accent);font-size:15px;font-variant-numeric:tabular-nums}
+  .pgm-row .n{font-size:17px;font-weight:600;color:var(--ink);letter-spacing:-0.012em}
+  .pgm-row .lvl{font-size:13px;color:var(--ink-soft)}
+  .pgm-row .st{font-size:13px;color:var(--ink-soft);text-align:right;font-family:'Source Serif 4',serif;font-style:italic}
+  .pgm-row.head .y,.pgm-row.head .n,.pgm-row.head .lvl,.pgm-row.head .st{font-size:10px;font-weight:700;color:var(--ink-mute);letter-spacing:0.18em;text-transform:uppercase;font-style:normal;font-family:'Inter Tight',sans-serif}
+
+  /* risk row */
+  .risks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line);margin-top:32px}
+  .risk{padding:28px 32px 28px 0;border-bottom:1px solid var(--line);border-right:1px solid var(--line);display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start}
+  .risk:nth-child(2n){border-right:none;padding-right:0;padding-left:0}
+  .risk-num{font-family:'Source Serif 4',serif;font-style:italic;font-size:28px;font-weight:400;color:var(--accent);line-height:1;letter-spacing:-0.02em}
+  .risk h4{font-size:17px;margin-bottom:10px}
+  .risk p{font-size:14px;line-height:1.55;color:var(--ink-soft)}
+  .risk .resp{margin-top:14px;font-size:13px;color:var(--ink);padding-top:14px;border-top:1px dashed var(--line)}
+  .risk .resp strong{font-weight:600;color:var(--accent-deep)}
+
+  /* question block */
+  .questions{margin-top:32px;border-top:1.5px solid var(--ink)}
+  .qrow{
+    display:grid;grid-template-columns:80px 1fr 1.4fr;gap:32px;
+    padding:28px 0;border-bottom:1px solid var(--line);align-items:start;
+  }
+  .qrow .qnum{
+    font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;
+    font-size:30px;color:var(--accent);line-height:1;letter-spacing:-0.02em;
+  }
+  .qrow .qttl{font-size:17px;font-weight:600;color:var(--ink);line-height:1.32;letter-spacing:-0.012em}
+  .qrow .qbody{font-size:14px;line-height:1.6;color:var(--ink-soft)}
+  .qrow .qbody .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:3px 8px;margin-bottom:10px}
+  .qrow .qbody .tag.gap{color:var(--warn);background:#f4e7e3}
+  .qrow .qbody .tag.has{color:var(--good);background:#e3f0e8}
+
+  /* benchmark */
+  .bench{width:100%;border-collapse:collapse;margin-top:32px}
+  .bench th,.bench td{padding:18px 20px;border-bottom:1px solid var(--line);font-size:14px;text-align:left;vertical-align:top}
+  .bench th{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);border-bottom:1px solid var(--ink)}
+  .bench td.name{font-weight:600;color:var(--ink);width:24%}
+  .bench td.pos{color:var(--ink-soft);width:38%}
+  .bench td.gap{color:var(--ink-soft);width:38%}
+  .bench tr.us td{background:var(--accent-soft)}
+  .bench tr.us td.name{color:var(--accent-deep)}
+
+  /* selection table for verticals */
+  .selection{width:100%;border-collapse:collapse;margin-top:32px;font-variant-numeric:tabular-nums}
+  .selection th,.selection td{padding:16px 14px;border-bottom:1px solid var(--line);font-size:14px;text-align:center;vertical-align:middle}
+  .selection th{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);border-bottom:1px solid var(--ink)}
+  .selection th:first-child,.selection td:first-child{text-align:left}
+  .selection td:first-child{font-weight:600;color:var(--ink)}
+  .selection td.dec{text-align:left;font-size:13px;color:var(--ink-soft);max-width:32ch}
+  .selection tr.us td{background:var(--accent-soft)}
+  .selection tr.us td:first-child{color:var(--accent-deep)}
+  /* selection rating: 5 dots, filled ones = score */
+  .rate{display:inline-flex;gap:4px;align-items:center;justify-content:center}
+  .rate i{display:inline-block;width:9px;height:9px;border-radius:50%;border:1px solid var(--ink);background:transparent}
+  .rate i.on{background:var(--accent);border-color:var(--accent)}
+  .rate i.hi{background:var(--hi);border-color:var(--hi)}
+
+  /* team */
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:48px}
+  .team-card{padding-top:24px;border-top:1.5px solid var(--ink)}
+  .team-card .role{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .team-card .name{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:4px;letter-spacing:-0.012em}
+  .team-card .focus{font-size:13px;line-height:1.55;color:var(--ink-mute);margin-top:10px}
+
+  /* budget table */
+  .budget{margin-top:32px;border-top:1.5px solid var(--ink)}
+  .budget-row{display:grid;grid-template-columns:1fr 2fr 1fr;gap:32px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
+  .budget-row.head{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);border-bottom:1px solid var(--ink);padding:0 0 12px}
+  .budget-row .item{font-weight:600;color:var(--ink);font-size:15px}
+  .budget-row .desc{font-size:14px;color:var(--ink-soft);line-height:1.5}
+  .budget-row .sum{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);text-align:right;font-size:15px}
+  .budget-row.total{padding:24px 0;border-bottom:1.5px solid var(--ink)}
+  .budget-row.total .item{font-size:17px;font-weight:800}
+  .budget-row.total .sum{font-size:22px;font-weight:800;color:var(--accent-deep)}
+
+  /* big number row */
+  .bignum-row{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin:48px 0}
+  .bignum{border-top:1.5px solid var(--ink);padding-top:20px}
+  .bignum .v{font-size:44px;font-weight:800;line-height:1;letter-spacing:-0.035em;color:var(--ink);margin-bottom:10px}
+  .bignum .v.accent{color:var(--accent)}
+  .bignum .l{font-size:13px;line-height:1.45;color:var(--ink-mute);max-width:26ch}
+
+  /* mark inline */
+  mark{background:var(--accent-soft);color:var(--ink);padding:0 4px;border-radius:0;font-weight:500}
+
+  /* chart container */
+  .chart-frame{background:var(--paper);padding:40px 32px 24px;margin-top:32px;border:1px solid var(--line)}
+  .chart-frame svg{display:block;width:100%;height:auto;max-width:100%}
+  .legend{display:flex;gap:32px;margin-top:20px;font-size:13px;color:var(--ink-soft);flex-wrap:wrap}
+  .legend i{display:inline-block;width:12px;height:12px;margin-right:8px;vertical-align:-1px}
+
+  /* footer */
+  footer{padding:56px 0 40px;border-top:1px solid var(--ink);background:var(--paper)}
+  footer .row{display:flex;justify-content:space-between;align-items:start;gap:48px}
+  footer .col h5{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px}
+  footer .col p{font-size:14px;color:var(--ink-soft);max-width:38ch}
+  footer .colophon{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:11px;color:var(--ink-mute);display:flex;justify-content:space-between;letter-spacing:0.04em}
+
+  /* utility */
+  .pull{margin-top:56px}
+  .mt-s{margin-top:24px}
+  .mt-m{margin-top:48px}
+  .mt-l{margin-top:80px}
+  .mb-s{margin-bottom:24px}
+  .mb-m{margin-bottom:40px}
+
+  /* responsive */
+  @media (max-width:1080px){
+    .wrap,.wrap-narrow{padding:0 32px}
+    h1{font-size:56px}
+    h2{font-size:38px}
+    .cols-2,.cols-2-wide,.cols-3,.cols-4,.signal-block,.checks,.quarters,.team-grid,.bignum-row{grid-template-columns:1fr;gap:32px}
+    .hero-grid{grid-template-columns:1fr;gap:32px}
+    .tape-grid{grid-template-columns:repeat(2,1fr)}
+    .pgm-row{grid-template-columns:80px 1fr;gap:16px}
+    .pgm-row .lvl,.pgm-row .st{display:none}
+    .qrow{grid-template-columns:1fr;gap:14px}
+    .assump{grid-template-columns:30px 1fr 1fr}
+    .assump-row .target{display:none}
+    .selection th,.selection td{padding:10px 6px;font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="brand"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAADSCAYAAACW0r5LAAAriUlEQVR4nO3dfdxnU73/8ddMk6hOjzrdnk4xhpiQJk3SEBPR5PgxaVJK07hNkiZ3CTFHUoQmJFGSyl2S3HQkIck9SWJM0uSo3CWnkMekuX5/rOtqLpfre12fz95r7bX2/r6fj8d+nJP57L0++3uzr/Xde63PAhERERERERERERERERERERERERERERERERERERERERERERERERERERERkRYbAE7InYSIiIhIVwwM247KnIuIiIhI6w2MsqmTJSIiIlLRaJ0rdbJEREREKhqrc6VOloiIiIjTD7F1sNTJEhERETGajL2DpU6WiIiIiIOnk3V0phxFREREWkedLBEREZEE1MkSERERSUCdLBEREZEE1MkSERERScDTyTo2U44iIiIirePpZJ2aKUcRERGR1vF0ss7KlKOIiIhIq3g6WA9mylFERESkNTydq0fzpCgiIiLSHupciYiIiESkzpWIiIhIROpciYiIiESkzpWIiIhIROpciYiIiETk6Vw9kilHERERkdbQnSsRkXrWAvYCzgD+iO16ugg4CdghQ74i2UwwxKwHnAgsGyNmErA/cGWEnFK4H3i5MfYvwL8nzKV0WwK7A0/1+PdJwOnAuZHaOwN4Lr0/X5OA84DTIrUn/Wm8z1lME4EnCdedJcBi4D7gtgbajm1lQodqn8jHfQA4BDg58nHF5wBgBr2v9xMJHek9GsuozxyO7VfKObkSNLDeuXq4ZjuTHW2N3EpxN+Pn2uvL6LWRoS3v63O045hXRjiH1O7Fdi6LHces+hnNtdW9tswp4ByGb/cAe9Y8p9QOobnXYzEwvZnTim4Z9vMsUZtzL95EQ4z1j2msP7q5/Al4Sc1j1Nn/9pptx2J5H2O91ynuJlzjiN0kQfsxTQZebYy1fn7WqpZKVrNr7t/EXSuPVYHjCX+4ngK2zpvO05xPyOu/G2zzNcCNwBMNthnDVtieAg3RXaA+Y+lg9YuFEY5R50K+NuFWrdRznjN+pyRZxHGII3a+Ma60zobFk7kTSOhZwA8InZotMuax/2AO22TMYaXBHA7PmIPHhc74LyfJQoqlDtZyz82dAPDz3Al0xE8csScly6K+HR2x9ybLQpryI+CsDO0OAEdmaLeXgwhj10o2peJ+02ImIWVTB6s8nrsW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" alt="Universal University"><div class="label"><span>Стратегический проект</span><span>Новые вертикали ВО</span></div></div>
+    <div class="nav-links">
+      <a href="#zachem">Зачем</a>
+      <a href="#pochemu">Почему две</a>
+      <a href="#cs">Компьютерные науки и ИИ</a>
+      <a href="#hosp">Гостеприимство</a>
+      <a href="#economics">Экономика</a>
+      <a href="#proof">Что проверяем</a>
+      <a href="#plan">Дорожная карта</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero no-border">
+  <div class="wrap">
+    <div class="hero-tag"><span class="bar"></span>Стратегический проект &middot; материал к совещанию</div>
+    <div class="hero-grid">
+      <div>
+        <h1>Две новые<br>вертикали<br>высшего <em>образования</em></h1>
+      </div>
+      <div class="hero-rt">
+        <p class="lead">Компьютерные науки и&nbsp;ИИ. Гостеприимство и&nbsp;экономика впечатлений. Документ собирает аргументы, разрывы и&nbsp;план проверки гипотезы для&nbsp;двух новых направлений портфеля&nbsp;UU.</p>
+        <div class="hero-meta-row">
+          <div>
+            <div class="label">Горизонт</div>
+            <div class="val">2027/28&ndash;2032/33</div>
+          </div>
+          <div>
+            <div class="label">Программ к&nbsp;запуску</div>
+            <div class="val">6</div>
+          </div>
+          <div>
+            <div class="label">Набор 2032/33</div>
+            <div class="val">733 чел.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TAPE ============ -->
+<div class="tape">
+  <div class="wrap">
+    <div class="tape-grid">
+      <div class="tape-cell">
+        <div class="n">6,8<span class="u">млн&nbsp;руб.</span></div>
+        <div class="lab">Стартовый бюджет 2026: упаковка, лицензирование, первый маркетинговый цикл.</div>
+        <div class="src">OpEx, без капитальных затрат</div>
+      </div>
+      <div class="tape-cell">
+        <div class="n">3,5<span class="u">млрд&nbsp;руб.</span></div>
+        <div class="lab">Кумулятивная выручка двух вертикалей за&nbsp;шесть учебных лет до&nbsp;2032/33.</div>
+        <div class="src">Финмодель АНО UU, апрель 2026, пересчёт</div>
+      </div>
+      <div class="tape-cell">
+        <div class="n">733</div>
+        <div class="lab">Студентов в&nbsp;наборе на&nbsp;двух вертикалях в&nbsp;учебном году 2032/33.</div>
+        <div class="src">533 ИТ &middot; 200 гостеприимство</div>
+      </div>
+      <div class="tape-cell">
+        <div class="n">6</div>
+        <div class="lab">Образовательных программ: 5&nbsp;бакалавриатов и&nbsp;1&nbsp;магистратура.</div>
+        <div class="src">Запуски 2027&ndash;2030</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TEZIS 01 - ZACHEM ============ -->
+<section id="zachem">
+  <div class="wrap">
+    <div class="chapter-mark">
+      <div class="num">01</div>
+      <div class="ttl">Контекст<span class="name">Почему университету нужны новые вертикали</span></div>
+    </div>
+    <div class="cols-2-wide">
+      <div>
+        <h2>Креативный портфель достиг потолка по&nbsp;рынку. Нужны направления с&nbsp;другой экономикой.</h2>
+      </div>
+      <div>
+        <p class="lead">За&nbsp;последние три года рост креативных направлений Universal University уперся в&nbsp;демографию набора, ценовой коридор и&nbsp;размер ниши. Внутри текущей рамки портфеля выручка растет, но&nbsp;вместе с&nbsp;ней растет и&nbsp;конкуренция за&nbsp;одну и&nbsp;ту&nbsp;же аудиторию.</p>
+        <p>Две новые вертикали&nbsp;- способ выйти к&nbsp;другому покупателю и&nbsp;другому работодателю, не&nbsp;размывая бренд университета. Компьютерные науки и&nbsp;гостеприимство&nbsp;- это рынки, где спрос растет независимо от&nbsp;конъюнктуры креативных индустрий, где работодатели готовы платить за&nbsp;выпускника управленческого уровня и&nbsp;где у&nbsp;UU есть смежная экспертиза, на&nbsp;которую можно опереться.</p>
+        <p>Технологическое и&nbsp;гостеприимственное ядро снимает зависимость портфеля от&nbsp;одного типа абитуриента и&nbsp;одного типа карьерного результата.</p>
+      </div>
+    </div>
+
+    <div class="bignum-row">
+      <div class="bignum">
+        <div class="v accent">9</div>
+        <div class="l">Текущих вертикалей креативных индустрий в&nbsp;портфеле&nbsp;UU. Все работают в&nbsp;одном ценовом коридоре.</div>
+      </div>
+      <div class="bignum">
+        <div class="v">~17%</div>
+        <div class="l">Сокращение населения 17&ndash;19&nbsp;лет в&nbsp;России к&nbsp;2032 году относительно 2024. Демография режет верх воронки.</div>
+      </div>
+      <div class="bignum">
+        <div class="v">3&times;</div>
+        <div class="l">Разница в&nbsp;стартовой зарплате между выпускником креативного направления и&nbsp;ИТ-выпускником&nbsp;- на&nbsp;старте карьеры.</div>
+      </div>
+      <div class="bignum">
+        <div class="v accent">2</div>
+        <div class="l">Направления, по&nbsp;которым у&nbsp;UU уже есть смежная экспертиза, но&nbsp;нет образовательных программ.</div>
+      </div>
+    </div>
+
+    <p class="note">Цифры по&nbsp;демографии и&nbsp;разрыву зарплат - предварительные оценки, источники указаны в&nbsp;Приложении&nbsp;A. До&nbsp;вынесения на&nbsp;Продуктовый комитет требуют независимой проверки внутренней аналитикой&nbsp;UU.</p>
+  </div>
+</section>
+
+<!-- ============ TEZIS 02 - POCHEMU ============ -->
+<section id="pochemu">
+  <div class="wrap">
+    <div class="chapter-mark">
+      <div class="num">02</div>
+      <div class="ttl">Выбор<span class="name">Как пришли к&nbsp;этим двум вертикалям</span></div>
+    </div>
+    <div class="cols-2-wide">
+      <div>
+        <h2>Компьютерные науки и&nbsp;ИИ, а&nbsp;также Гостеприимство и&nbsp;экономика впечатлений дают и&nbsp;рост, и&nbsp;маржу, и&nbsp;стратегическую совместимость.</h2>
+      </div>
+      <div>
+        <p class="lead">Стратегическая сессия 2026 года рассматривала портфель из&nbsp;11&nbsp;потенциальных направлений. Каждое оценивалось по&nbsp;четырем измерениям: краткосрочный рост спроса, долгосрочная устойчивость, масштабируемость и&nbsp;потенциал маржи.</p>
+        <p>Из&nbsp;этой рамки две вертикали&nbsp;- компьютерные технологии и&nbsp;гостеприимство&nbsp;- получили высший балл по&nbsp;всем четырем критериям. Остальные направления либо растут медленнее, либо упираются в&nbsp;инфраструктуру и&nbsp;стоимость физических ресурсов, либо плохо ложатся в&nbsp;существующую среду университета.</p>
+      </div>
+    </div>
+
+    <table class="selection">
+      <thead>
+        <tr>
+          <th style="width:24%">Вертикаль</th>
+          <th>Кратко-<br>срочный<br>рост</th>
+          <th>Долго-<br>срочный<br>рост</th>
+          <th>Масшта-<br>бируе-<br>мость</th>
+          <th>Потенциал<br>маржи</th>
+          <th style="width:30%">Решение</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="us">
+          <td>Компьютерные науки и&nbsp;ИИ</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td class="dec">Новая вертикаль. Запуск 2027/28.</td>
+        </tr>
+        <tr class="us">
+          <td>Гостеприимство и&nbsp;экономика впечатлений</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td>
+          <td class="dec">Новая вертикаль. Запуск 2027/28.</td>
+        </tr>
+        <tr>
+          <td>Бизнес и&nbsp;маркетинг</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td class="dec">Растим текущую вертикаль.</td>
+        </tr>
+        <tr>
+          <td>Мода и&nbsp;стиль</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td class="dec">Растим, ограничено по&nbsp;масштабу.</td>
+        </tr>
+        <tr>
+          <td>Кинопроизводство</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td class="dec">Развиваем инфраструктуру и&nbsp;качество.</td>
+        </tr>
+        <tr>
+          <td>Музыка</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td class="dec">Расширяем за&nbsp;счет онлайн-формата.</td>
+        </tr>
+        <tr>
+          <td>Промышленный и&nbsp;пространственный дизайн</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td class="dec">Развиваем существующие программы.</td>
+        </tr>
+        <tr>
+          <td>Коммуникационный дизайн</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td class="dec">Удерживаем набор, повышаем технологичность.</td>
+        </tr>
+        <tr>
+          <td>Анимация и&nbsp;видеоигры</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td class="dec">Удерживаем как бренд, международная экспансия.</td>
+        </tr>
+        <tr>
+          <td>Архитектура</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td class="dec">Сохраняем набор, поднимаем стоимость.</td>
+        </tr>
+        <tr>
+          <td>Современное искусство</td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td>
+          <td class="dec">Сохраняем как культурный капитал.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">Оценки выставлены коллективно на&nbsp;стратегической сессии февраль 2026 по&nbsp;шкале 1&ndash;5. Шкала: <span style="display:inline-flex;align-items:center;gap:12px;margin-left:8px;vertical-align:middle"><span style="font-size:11px;color:var(--ink-mute)">низкий</span><span class="rate"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="rate"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span style="font-size:11px;color:var(--ink-mute)">высокий</span></span></p>
+  </div>
+</section>
+
+<!-- ============ CS&AI ============ -->
+<section id="cs">
+  <div class="wrap">
+    <div class="chapter-mark">
+      <div class="num">03</div>
+      <div class="ttl">Вертикаль I<span class="name">Компьютерные науки и&nbsp;ИИ</span></div>
+    </div>
+    <div class="cols-2-wide">
+      <div>
+        <h2>Готовим продуктовых инженеров на&nbsp;стыке кода, продукта и&nbsp;креативности.</h2>
+      </div>
+      <div>
+        <p class="lead">МФТИ, ВШЭ, ИТМО и&nbsp;Иннополис сильны в&nbsp;ядре инженерии. На&nbsp;их&nbsp;поле UU не&nbsp;выигрывает и&nbsp;не&nbsp;собирается. Наша ниша&nbsp;- продуктовая инженерия: специалист, который соединяет код, ИИ-инструменты, пользовательский опыт, экономику продукта и&nbsp;индустриальный контекст.</p>
+        <p>Логика такая. Внутри России почти все технические вузы готовят инженеров. Среди креативных университетов школы прикладной информатики пока нет. На&nbsp;стыке этих двух полей у&nbsp;UU есть преимущество, которого нет ни&nbsp;у&nbsp;инженерных, ни&nbsp;у&nbsp;дизайн-школ.</p>
+      </div>
+    </div>
+
+    <div class="bignum-row mt-l">
+      <div class="bignum">
+        <div class="v accent">+15%</div>
+        <div class="l">Прогноз роста занятости разработчиков на&nbsp;десятилетнем горизонте по&nbsp;данным US&nbsp;BLS.</div>
+      </div>
+      <div class="bignum">
+        <div class="v">+170 млн</div>
+        <div class="l">Новых рабочих мест к&nbsp;2030 по&nbsp;опросу крупных работодателей WEF, минус 92&nbsp;млн&nbsp;- вытесненных.</div>
+      </div>
+      <div class="bignum">
+        <div class="v">1,7 млн</div>
+        <div class="l">Занятых в&nbsp;ИТ-отрасли в&nbsp;России. Сектор растет быстрее экономики в&nbsp;целом.</div>
+      </div>
+      <div class="bignum">
+        <div class="v accent">0</div>
+        <div class="l">Прямых российских аналогов программы &laquo;продуктовый инженер&raquo; по&nbsp;открытым источникам.</div>
+      </div>
+    </div>
+
+    <!-- JUNIOR -> MIDDLE SHIFT -->
+    <div class="pull">
+      <h3 class="mb-s">Возможный сдвиг продукта: не&nbsp;джун, а&nbsp;middle</h3>
+      <div class="cols-2-wide">
+        <div>
+          <p class="lead">Рынок труда в&nbsp;ИТ ломается на&nbsp;входе. Часть задач, которые раньше делал джун, теперь делает ИИ-инструмент. Безработица среди молодых выпускников ИТ-специальностей в&nbsp;США и&nbsp;Европе достигла критического уровня. Возрастной коридор найма сузился: оффер чаще получают кандидаты 27&ndash;34 лет.</p>
+        </div>
+        <div>
+          <p>В&nbsp;этих условиях имеет смысл сдвинуть целевую планку программы. Не&nbsp;джун-исполнитель на&nbsp;старте, а&nbsp;middle/middle+ к&nbsp;моменту выпуска: запущенные проекты, портфолио инженерных решений, опыт работы в&nbsp;команде, опыт принятия архитектурных решений, опыт работы с&nbsp;ИИ-инструментами как с&nbsp;частью стека.</p>
+          <p>Технически это означает больше реальной практики уже с&nbsp;1&ndash;2 курса, более ранний выход на&nbsp;партнерские брифы, обязательные собственные запуски и&nbsp;коммерческие проекты с&nbsp;3 курса. Подробнее&nbsp;- в&nbsp;контрольных точках 02 и&nbsp;03.</p>
+          <p class="note">Гипотеза требует валидации индустриальными партнерами и&nbsp;академическим советом до&nbsp;июльского ПК. От&nbsp;ответа зависит структура учебного плана и&nbsp;объем проектной работы.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BENCHMARK -->
+    <div class="pull">
+      <h3 class="mb-s">Чем мы&nbsp;отличаемся от&nbsp;соседей по&nbsp;полю</h3>
+      <p>На&nbsp;стратегической сессии разбирался каждый из&nbsp;конкурентов. Часть совпадений есть везде, прямого аналога&nbsp;нет.</p>
+      <table class="bench">
+        <thead>
+          <tr><th>Университет</th><th>Что у&nbsp;них сильно</th><th>Чего нет</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">ВШЭ &middot; Управление цифровым продуктом</td><td class="pos">Цифровой продукт, аналитика, экономика</td><td class="gap">Бизнес-информатика и&nbsp;управление, не&nbsp;инженерная сборка</td></tr>
+          <tr><td class="name">ВШЭ &middot; Цифровой продукт и&nbsp;ИИ</td><td class="pos">Дизайн, кодинг, ИИ, портфолио</td><td class="gap">Дизайн-фокус, не&nbsp;инженерный профиль прикладной информатики</td></tr>
+          <tr><td class="name">ИТМО &middot; MLOps</td><td class="pos">Прикладная информатика, ИИ, разработка</td><td class="gap">ИИ-инфраструктура, продукт и&nbsp;UX не&nbsp;ядро</td></tr>
+          <tr><td class="name">МИСИС &middot; Цифровые продукты</td><td class="pos">ИТ, маркетинг ПО, проекты партнеров</td><td class="gap">Управление продуктами, не&nbsp;продуктовая инженерия</td></tr>
+          <tr><td class="name">МФТИ / Яндекс &middot; Программная инженерия</td><td class="pos">Сильная инженерная база</td><td class="gap">Продукт и&nbsp;go-to-market не&nbsp;ядро</td></tr>
+          <tr class="us"><td class="name">Universal University</td><td class="pos">Разработка + ИИ + продукт + данные + UX + рынок в&nbsp;одной сборке</td><td class="gap">Первый набор в&nbsp;2027/28, кадровая база собирается</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PROGRAMS -->
+    <div class="pull">
+      <h3 class="mb-s">Программы вертикали</h3>
+      <p>Четыре бакалаврских программы запускаются последовательно с&nbsp;шагом в&nbsp;год. Решение о&nbsp;запуске каждой следующей принимается по&nbsp;результатам предыдущего набора.</p>
+      <div class="pgm-list">
+        <div class="pgm-row head">
+          <div class="y">Год запуска</div>
+          <div class="n">Программа</div>
+          <div class="lvl">Уровень</div>
+          <div class="st">Статус</div>
+        </div>
+        <div class="pgm-row">
+          <div class="y">2027/28</div>
+          <div class="n">Прикладная информатика</div>
+          <div class="lvl">Бакалавриат, 4&nbsp;года</div>
+          <div class="st">Концепт собран</div>
+        </div>
+        <div class="pgm-row">
+          <div class="y">2028/29</div>
+          <div class="n">Технологический дизайнпренер</div>
+          <div class="lvl">Бакалавриат, 4&nbsp;года</div>
+          <div class="st">Зависит от&nbsp;первого набора</div>
+        </div>
+        <div class="pgm-row">
+          <div class="y">2029/30</div>
+          <div class="n">Компьютерные технологии в&nbsp;креативных индустриях</div>
+          <div class="lvl">Бакалавриат, 4&nbsp;года</div>
+          <div class="st">Эскиз</div>
+        </div>
+        <div class="pgm-row">
+          <div class="y">2030/31</div>
+          <div class="n">Анализ данных и&nbsp;бизнес в&nbsp;креативных индустриях</div>
+          <div class="lvl">Бакалавриат, 4&nbsp;года</div>
+          <div class="st">Эскиз</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIRST PROGRAM CARD -->
+    <div class="card-soft pull">
+      <span class="eyebrow"><span class="num">3.1</span>Первая программа &middot; запуск сентябрь 2027</span>
+      <h3 class="mb-s">Прикладная информатика. Продуктовый инженер.</h3>
+      <p>Программа готовит инженеров, которые не&nbsp;только пишут код, но&nbsp;и&nbsp;понимают, какой продукт нужно делать, для&nbsp;кого, зачем и&nbsp;как довести его до&nbsp;результата. Стек, через который собирается выпускник: разработка, ИИ-инструменты, продуктовая аналитика, UX-исследования, экономика продукта, безопасность и&nbsp;право.</p>
+      <p>Обучение по&nbsp;ФГОС 09.03.03 &laquo;Прикладная информатика&raquo;: 240&nbsp;з.е., 4&nbsp;года очного обучения. Внутри ФГОС университет формирует свой профиль, набор профессиональных компетенций и&nbsp;индикаторы.</p>
+      <div class="cols-3 mt-m">
+        <div>
+          <div class="eyebrow" style="margin-bottom:8px">Карьерные треки</div>
+          <p style="font-size:14px">Продуктовый инженер, ML-инженер прикладного слоя, технический продакт, AI-продюсер, инженер цифровых продуктов в&nbsp;креативных индустриях.</p>
+        </div>
+        <div>
+          <div class="eyebrow" style="margin-bottom:8px">Целевые партнеры</div>
+          <p style="font-size:14px">Сбер, Яндекс, VK, Авито, продуктовые студии. Резиденции, стажировки, проектные брифы, участие в&nbsp;дипломной комиссии.</p>
+        </div>
+        <div>
+          <div class="eyebrow" style="margin-bottom:8px">Первый набор</div>
+          <p style="font-size:14px">28&nbsp;человек, сентябрь 2027. Стоимость 1,1&nbsp;млн&nbsp;руб./год.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT WE DONT KNOW YET - CS&AI -->
+    <div class="pull">
+      <h3 class="mb-s">Что мы&nbsp;знаем и&nbsp;что должны проверить до&nbsp;запуска</h3>
+      <p>Аргументы выше&nbsp;- сигналы с&nbsp;рынка. Они говорят, что направление есть. Они не&nbsp;отвечают на&nbsp;три главных вопроса.</p>
+      <div class="questions">
+        <div class="qrow">
+          <div class="qnum">i</div>
+          <div>
+            <div class="qttl">Где конкретно наш рынок и&nbsp;на&nbsp;каком объеме мы&nbsp;его держим</div>
+          </div>
+          <div class="qbody">
+            <span class="tag has">что есть</span>
+            Рост ИТ-сектора в&nbsp;России и&nbsp;дефицит продуктовых ролей&nbsp;- открытые данные. Спрос на&nbsp;выпускников программ прикладной информатики у&nbsp;ВШЭ и&nbsp;ИТМО подтверждается воронкой и&nbsp;конкурсом.<br><br>
+            <span class="tag gap">что проверяем</span>
+            Сколько именно абитуриентов в&nbsp;Москве и&nbsp;трех крупнейших городах готовы выбрать продуктово-инженерный профиль вместо классической программной инженерии. Целевой минимум первого набора&nbsp;- 28&nbsp;человек: ниже этого уровня программа не&nbsp;окупает первый год с&nbsp;учетом стандартной отчисляемости за&nbsp;четыре года.
+          </div>
+        </div>
+        <div class="qrow">
+          <div class="qnum">ii</div>
+          <div>
+            <div class="qttl">Кто готов платить за&nbsp;эту программу 1,1&nbsp;млн&nbsp;руб. в&nbsp;год</div>
+          </div>
+          <div class="qbody">
+            <span class="tag has">что есть</span>
+            Креативные программы UU подтвердили готовность аудитории платить за&nbsp;премиальный бакалавриат. Бакалавриат &laquo;Дизайн&raquo; в&nbsp;кампанию 2025/26 получил 317&nbsp;заявок на&nbsp;ограниченное число платных мест. ИТ-аудитория исторически платит за&nbsp;программирование сопоставимо или&nbsp;выше, чем за&nbsp;дизайн.<br><br>
+            <span class="tag gap">что проверяем</span>
+            Платит ли&nbsp;за&nbsp;продуктово-инженерный профиль та&nbsp;же аудитория, что покупает дизайн&nbsp;UU, либо это другой сегмент. Если другой&nbsp;- через какой канал он&nbsp;узнает о&nbsp;программе. Цикл проверки&nbsp;- кампания осень 2026 &ndash;&nbsp;весна 2027.
+          </div>
+        </div>
+        <div class="qrow">
+          <div class="qnum">iii</div>
+          <div>
+            <div class="qttl">Где эластичность спроса по&nbsp;цене</div>
+          </div>
+          <div class="qbody">
+            <span class="tag gap">данных нет</span>
+            Прямого замера эластичности по&nbsp;этой программе нет&nbsp;- программа не&nbsp;запущена. Оценка по&nbsp;бенчмарку родственных программ UU и&nbsp;частных бакалавриатов в&nbsp;Москве дает коэффициент в&nbsp;диапазоне -0,4 до&nbsp;-0,7. Прямой проверки нет.<br><br>
+            <span class="tag">план</span>
+            Тест двух ценовых точек на&nbsp;старте кампании 2026: 1,1&nbsp;и&nbsp;1,3&nbsp;млн&nbsp;руб./год. Замер конверсии лид&nbsp;-&nbsp;заявка&nbsp;-&nbsp;оплата по&nbsp;каждой точке. Решение по&nbsp;окончательной цене&nbsp;- в&nbsp;марте 2027 по&nbsp;результатам теста.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RISKS -->
+    <div class="pull">
+      <h3 class="mb-s">Риски вертикали и&nbsp;как их&nbsp;закрываем</h3>
+      <div class="risks-grid">
+        <div class="risk">
+          <div class="risk-num">i</div>
+          <div>
+            <h4>Нет ИТ-бренда</h4>
+            <p>На&nbsp;рынке UU воспринимается как креативный университет. Абитуриент-технарь по&nbsp;умолчанию идет в&nbsp;МФТИ, ВШЭ или&nbsp;ИТМО.</p>
+            <div class="resp"><strong>Что делаем:</strong> позиционирование &laquo;продуктового инженера&raquo;, индустриальные партнеры на&nbsp;виду, два независимых CTO в&nbsp;валидационном совете программы.</div>
+          </div>
+        </div>
+        <div class="risk">
+          <div class="risk-num">ii</div>
+          <div>
+            <h4>Слабая академическая база</h4>
+            <p>В&nbsp;UU нет собственной школы программной инженерии. Преподавательский состав нужно собирать с&nbsp;нуля.</p>
+            <div class="resp"><strong>Что делаем:</strong> PL-уровня академический руководитель из&nbsp;индустрии. 70% преподавателей&nbsp;- действующие практики. Партнерство с&nbsp;Сбером и&nbsp;Яндексом по&nbsp;кадрам и&nbsp;дисциплинам.</div>
+          </div>
+        </div>
+        <div class="risk">
+          <div class="risk-num">iii</div>
+          <div>
+            <h4>Картонная программа</h4>
+            <p>Опасение AB: программа окажется &laquo;дизайнерским курсом с&nbsp;кодингом&raquo; и&nbsp;потеряет инженерную глубину.</p>
+            <div class="resp"><strong>Что делаем:</strong> учебный план проходит независимую экспертизу двух действующих CTO до&nbsp;вынесения на&nbsp;июльский ПК. Каждый семестр заканчивается защитой проекта с&nbsp;индустриальным заказчиком. По&nbsp;дисциплинам алгоритмов, архитектуры и&nbsp;баз данных вводится сквозной контроль освоения результата.</div>
+          </div>
+        </div>
+        <div class="risk">
+          <div class="risk-num">iv</div>
+          <div>
+            <h4>Безработица среди ИТ-выпускников</h4>
+            <p>ИИ-инструменты забрали часть работы, которая раньше шла джуну. Возрастной коридор найма сузился. Это меняет требования к&nbsp;выпускникам и&nbsp;к&nbsp;программе.</p>
+            <div class="resp"><strong>Что делаем:</strong> программа целится не&nbsp;в&nbsp;джуна на&nbsp;старте, а&nbsp;в&nbsp;middle/middle+ к&nbsp;моменту выпуска. Больше реальной практики, обязательные запуски проектов, портфолио инженерных решений, работа с&nbsp;ИИ как с&nbsp;частью стека.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOSPITALITY ============ -->
+<section id="hosp">
+  <div class="wrap">
+    <div class="chapter-mark">
+      <div class="num">04</div>
+      <div class="ttl">Вертикаль II<span class="name">Гостеприимство и&nbsp;экономика впечатлений</span></div>
+    </div>
+    <div class="cols-2-wide">
+      <div>
+        <h2>Управление гостевым опытом, экономикой проекта и&nbsp;развитием туристических территорий.</h2>
+      </div>
+      <div>
+        <p class="lead">В&nbsp;России за&nbsp;2022&ndash;2025 годы кратно увеличилось число гостиниц, курортов и&nbsp;культурно-туристических проектов. Управленцев нового типа&nbsp;- кто проектирует гостевой опыт, считает юнит-экономику впечатления и&nbsp;собирает партнерскую сеть&nbsp;- индустрия выращивает внутри себя по&nbsp;3&ndash;5&nbsp;лет.</p>
+        <p>Классические профильные факультеты остались в&nbsp;рамке туризма 1990-х. Швейцарские школы&nbsp;- Les Roches, Glion, EHL&nbsp;- готовят к&nbsp;операционным позициям международных сетей и&nbsp;стоят 42&ndash;48&nbsp;тыс. евро в&nbsp;год. На&nbsp;этом поле есть незакрытая ниша российского масштаба, и&nbsp;именно она ложится в&nbsp;креативную среду&nbsp;UU.</p>
+      </div>
+    </div>
+
+    <div class="bignum-row mt-l">
+      <div class="bignum">
+        <div class="v accent">174 млн</div>
+        <div class="l">Внутренних туристических поездок в&nbsp;России в&nbsp;2025 году, рост 7,4% к&nbsp;2024.</div>
+      </div>
+      <div class="bignum">
+        <div class="v">1,94 трлн</div>
+        <div class="l">Расходы россиян на&nbsp;внутренний туризм за&nbsp;2025 год, в&nbsp;рублях, оценочные данные отрасли.</div>
+      </div>
+      <div class="bignum">
+        <div class="v">~18 тыс.</div>
+        <div class="l">Открытых вакансий в&nbsp;индустрии, для&nbsp;которых нет нужной квалификации.</div>
+      </div>
+      <div class="bignum">
+        <div class="v accent">86 млрд</div>
+        <div class="l">Государственные инвестиции в&nbsp;курортную и&nbsp;туристическую инфраструктуру до&nbsp;2030 года.</div>
+      </div>
+    </div>
+
+    <!-- BENCHMARK HOSPITALITY -->
+    <div class="pull">
+      <h3 class="mb-s">Чем мы&nbsp;отличаемся от&nbsp;соседей по&nbsp;полю</h3>
+      <table class="bench">
+        <thead>
+          <tr><th>Университет</th><th>Что у&nbsp;них сильно</th><th>Чего нет</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Les Roches &middot; Швейцария</td><td class="pos">Международный нетворк, действующий отель в&nbsp;кампусе, стажировки в&nbsp;люксе</td><td class="gap">Операционные позиции в&nbsp;сетях, кампус вне российских реалий, &asymp;45&nbsp;тыс.&nbsp;евро/год</td></tr>
+          <tr><td class="name">Glion &middot; Швейцария</td><td class="pos">Сила бренда, операционная база, кейсы Marriott и&nbsp;Accor</td><td class="gap">Классический гостиничный менеджмент, слабый фокус на&nbsp;цифре и&nbsp;дестинациях</td></tr>
+          <tr><td class="name">МГИМО &middot; Туризм и&nbsp;гостеприимство</td><td class="pos">Сильная теория, языки</td><td class="gap">Классический менеджмент, слабая проектная часть, нет отраслевого портфолио</td></tr>
+          <tr><td class="name">РЭУ &middot; ВШЭ &middot; Туризм</td><td class="pos">Доступная цена, экономическая база</td><td class="gap">Экономика впечатления и&nbsp;CX не&nbsp;выделены в&nbsp;дисциплины, академический состав</td></tr>
+          <tr><td class="name">Skillbox / Нетология</td><td class="pos">Гибкие модули по&nbsp;90&ndash;150&nbsp;тыс. за&nbsp;несколько месяцев</td><td class="gap">Переподготовка, не&nbsp;высшее образование, нет общеуниверситетской базы</td></tr>
+          <tr class="us"><td class="name">Universal University</td><td class="pos">Продуктовая логика, гостевой опыт, дестинации, ИИ как сквозная компетенция, индустриальные партнеры с&nbsp;1&nbsp;курса</td><td class="gap">Первый набор в&nbsp;2027/28, 1,1&nbsp;млн&nbsp;руб./год, бренд гостеприимства собирается</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PROGRAMS HOSPITALITY -->
+    <div class="pull">
+      <h3 class="mb-s">Программы вертикали</h3>
+      <p>Два запуска: бакалавриат в&nbsp;2027 и&nbsp;магистратура в&nbsp;2029. Магистратура запускается только после первого выпуска бакалавриата и&nbsp;валидации спроса на&nbsp;старший уровень.</p>
+      <div class="pgm-list">
+        <div class="pgm-row head">
+          <div class="y">Год запуска</div>
+          <div class="n">Программа</div>
+          <div class="lvl">Уровень</div>
+          <div class="st">Статус</div>
+        </div>
+        <div class="pgm-row">
+          <div class="y">2027/28</div>
+          <div class="n">Управление в&nbsp;индустрии гостеприимства и&nbsp;экономике впечатлений</div>
+          <div class="lvl">Бакалавриат, 4&nbsp;года</div>
+          <div class="st">Концепт собран</div>
+        </div>
+        <div class="pgm-row">
+          <div class="y">2029/30</div>
+          <div class="n">Менеджмент в&nbsp;индустрии гостеприимства и&nbsp;экономике впечатлений</div>
+          <div class="lvl">Магистратура, 2&nbsp;года</div>
+          <div class="st">Зависит от&nbsp;первого выпуска</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIRST PROGRAM HOSPITALITY CARD -->
+    <div class="card-soft pull">
+      <span class="eyebrow"><span class="num">4.1</span>Первая программа &middot; запуск сентябрь 2027</span>
+      <h3 class="mb-s">Управление в&nbsp;индустрии гостеприимства и&nbsp;экономике впечатлений.</h3>
+      <p>Программа готовит управленцев продуктового типа для&nbsp;индустрии гостеприимства и&nbsp;впечатлений: специалистов, способных разработать формат от&nbsp;концепции до&nbsp;запуска, сформировать команду, выстроить отношения с&nbsp;партнерами, обосновать экономику проекта и&nbsp;обеспечить устойчивую работу с&nbsp;гостем.</p>
+      <p>Содержание собрано на&nbsp;трех опорах: академическая база (экономика впечатлений, поведение потребителя, бренд, право, финансы), прикладной слой (проектирование гостевого опыта, операционка, продакт-менеджмент, событийное продюсирование, цифровые системы) и&nbsp;проектная работа по&nbsp;брифам индустриальных заказчиков каждый семестр.</p>
+      <div class="cols-3 mt-m">
+        <div>
+          <div class="eyebrow" style="margin-bottom:8px">Карьерные треки</div>
+          <p style="font-size:14px">Продуктовый менеджер в&nbsp;гостеприимстве, CX-менеджер, продюсер туристических и&nbsp;культурных продуктов, руководитель в&nbsp;курортном девелопменте, менеджер территориального бренда, предприниматель.</p>
+        </div>
+        <div>
+          <div class="eyebrow" style="margin-bottom:8px">Целевые партнеры</div>
+          <p style="font-size:14px">Cosmos Hotel Group, Mantera Group, Сириус, ВДНХ, региональные туристические офисы (Алтай, Карелия, Калининград, Сочи), продюсерские центры событийного направления.</p>
+        </div>
+        <div>
+          <div class="eyebrow" style="margin-bottom:8px">Первый набор</div>
+          <p style="font-size:14px">30&nbsp;человек, сентябрь 2027. Стоимость 1,1&nbsp;млн&nbsp;руб./год.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT WE DONT KNOW YET - HOSPITALITY -->
+    <div class="pull">
+      <h3 class="mb-s">Что мы&nbsp;знаем и&nbsp;что должны проверить до&nbsp;запуска</h3>
+      <p>Аргументы выше показывают, что индустрия растет и&nbsp;кадров не&nbsp;хватает. Эти аргументы не&nbsp;отвечают на&nbsp;три главных вопроса.</p>
+      <div class="questions">
+        <div class="qrow">
+          <div class="qnum">i</div>
+          <div>
+            <div class="qttl">Где конкретно наш рынок и&nbsp;на&nbsp;каком объеме мы&nbsp;его держим</div>
+          </div>
+          <div class="qbody">
+            <span class="tag has">что есть</span>
+            Cosmos Hotel Group, Mantera, ВДНХ и&nbsp;Сириус публикуют запросы на&nbsp;продуктовых менеджеров со&nbsp;стартовой компенсацией 180&nbsp;тыс. руб. в&nbsp;месяц. Шесть гостиничных групп и&nbsp;три территориальных оператора подтвердили устный интерес к&nbsp;программе.<br><br>
+            <span class="tag gap">что проверяем</span>
+            Сколько абитуриентов готовы выбрать профильную программу гостеприимства в&nbsp;Москве вместо классического менеджмента в&nbsp;РЭУ или&nbsp;туризма в&nbsp;МГИМО. Целевая емкость на&nbsp;первый набор&nbsp;- 30&nbsp;мест. Запас 5&ndash;7&times; нужен для&nbsp;качественного отбора.
+          </div>
+        </div>
+        <div class="qrow">
+          <div class="qnum">ii</div>
+          <div>
+            <div class="qttl">Кто готов платить за&nbsp;эту программу 1,1&nbsp;млн&nbsp;руб. в&nbsp;год</div>
+          </div>
+          <div class="qbody">
+            <span class="tag has">что есть</span>
+            Гипотеза двух сегментов. Городские наследники из&nbsp;Москвы и&nbsp;Петербурга&nbsp;- семьи в&nbsp;креативных индустриях и&nbsp;ресторанном бизнесе, опыт международного потребления. Региональные амбициозные из&nbsp;Сочи, Калининграда, Казани, Алтая&nbsp;- ориентация на&nbsp;будущие управленческие позиции в&nbsp;курортном девелопменте.<br><br>
+            <span class="tag gap">что проверяем</span>
+            Платежеспособность гипотезы. Воронка кампании 2026: какая доля заявок приходит из&nbsp;каждого сегмента, как соотносится конверсия лид-оплата. Если основной поток&nbsp;- регионы, потребуются стипендиальные программы и&nbsp;партнерство с&nbsp;отраслевыми работодателями.
+          </div>
+        </div>
+        <div class="qrow">
+          <div class="qnum">iii</div>
+          <div>
+            <div class="qttl">Где эластичность спроса по&nbsp;цене</div>
+          </div>
+          <div class="qbody">
+            <span class="tag gap">данных нет</span>
+            Премиальные программы UU&nbsp;- &laquo;Дизайн&raquo;, &laquo;Архитектура&raquo;&nbsp;- работают и&nbsp;собирают воронку. Это косвенный сигнал, что аудитория в&nbsp;Москве, готовая платить за&nbsp;креативный бакалавриат, существует. Прямой эластичности для&nbsp;гостеприимства не&nbsp;замерено: нет ни&nbsp;программы, ни&nbsp;истории кампании.<br><br>
+            <span class="tag">план</span>
+            Тест ценовых точек 1,1 и&nbsp;1,3&nbsp;млн&nbsp;руб./год в&nbsp;кампании 2026/27. Граница снизу: 850&nbsp;тыс.&nbsp;руб., ниже которой программа теряет премиальный сигнал. Граница сверху&nbsp;- 1,4&nbsp;млн, выше которой возможен переток в&nbsp;РАНХиГС, МГИМО или&nbsp;зарубежные программы Восточной Европы.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RISKS HOSPITALITY -->
+    <div class="pull">
+      <h3 class="mb-s">Риски вертикали и&nbsp;как их&nbsp;закрываем</h3>
+      <div class="risks-grid">
+        <div class="risk">
+          <div class="risk-num">i</div>
+          <div>
+            <h4>Гостеприимство кажется чужой для&nbsp;UU</h4>
+            <p>Возражение AB: креативный университет и&nbsp;гостиничный факультет&nbsp;- разные миры. Бренд UU не&nbsp;ассоциируется с&nbsp;индустрией.</p>
+            <div class="resp"><strong>Что делаем:</strong> позиционирование через экономику впечатлений, дизайн среды, продюсирование событий, территориальный бренд. Это креативные дисциплины в&nbsp;индустриальной рамке, не&nbsp;операционный менеджмент.</div>
+          </div>
+        </div>
+        <div class="risk">
+          <div class="risk-num">ii</div>
+          <div>
+            <h4>Партнеры на&nbsp;уровне контактов</h4>
+            <p>На&nbsp;текущий момент со&nbsp;всеми целевыми партнерами&nbsp;- статус &laquo;контакт&raquo;. LOI и&nbsp;меморандумы не&nbsp;подписаны.</p>
+            <div class="resp"><strong>Что делаем:</strong> переговоры о&nbsp;LOI в&nbsp;октябре&nbsp;-&nbsp;декабре 2026. Рамочные соглашения&nbsp;- апрель&nbsp;-&nbsp;июнь 2027. Если за&nbsp;2026 год не&nbsp;будет подписан минимум 1&nbsp;якорный LOI&nbsp;- запуск откладывается.</div>
+          </div>
+        </div>
+        <div class="risk">
+          <div class="risk-num">iii</div>
+          <div>
+            <h4>Неочевидность для&nbsp;абитуриента</h4>
+            <p>В&nbsp;стране нет аналогичных программ. Аудитория не&nbsp;знает, что искать. Стандартный сценарий выбора профессии не&nbsp;ведет на&nbsp;эту программу.</p>
+            <div class="resp"><strong>Что делаем:</strong> дни открытых дверей на&nbsp;площадках партнеров (Cosmos, Mantera). Программа амбассадоров в&nbsp;школах Москвы и&nbsp;курортных регионов. Региональные выезды команды программы.</div>
+          </div>
+        </div>
+        <div class="risk">
+          <div class="risk-num">iv</div>
+          <div>
+            <h4>Внешний шок туристического рынка</h4>
+            <p>Туризм исторически реагирует на&nbsp;кризисы&nbsp;- 2009, 2015, 2022. Программа открывается на&nbsp;росте отрасли.</p>
+            <div class="resp"><strong>Что делаем:</strong> программа выпускает не&nbsp;только в&nbsp;гостиничный сегмент: культурный туризм, событийные форматы, дестинационный девелопмент, креативные индустрии. Внутренний туризм в&nbsp;кризисах рос быстрее массового выездного.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ECONOMICS - SEPARATED PER VERTICAL ============ -->
+<section id="economics">
+  <div class="wrap">
+    <div class="chapter-mark">
+      <div class="num">05</div>
+      <div class="ttl">Экономика<span class="name">Финансовая модель по&nbsp;каждой вертикали отдельно</span></div>
+    </div>
+    <div class="cols-2-wide">
+      <div>
+        <h2>Модель собирается снизу вверх по&nbsp;каждой вертикали. Цифры считаются от&nbsp;набора, среднего чека и&nbsp;маржи, а&nbsp;не&nbsp;от&nbsp;целевой выручки.</h2>
+      </div>
+      <div>
+        <p class="lead">Кумулятивная выручка двух вертикалей за&nbsp;шесть лет&nbsp;- 3,5&nbsp;млрд&nbsp;руб., кумулятивная чистая прибыль&nbsp;- 720&nbsp;млн&nbsp;руб. ИТ-вертикаль даст к&nbsp;шестому году более крупный финансовый результат за&nbsp;счет четырех программ против двух у&nbsp;гостеприимства.</p>
+        <p>Все цены в&nbsp;модели индексируются на&nbsp;10% в&nbsp;год вместе с&nbsp;премиальным сегментом высшего образования. Допущения по&nbsp;индексации проверяются на&nbsp;воронке кампании 2026/27 и&nbsp;корректируются по&nbsp;ее&nbsp;результатам.</p>
+        <p class="note">В&nbsp;текущей версии финмодели программы гостеприимства первоначально были посчитаны как магистратуры. По&nbsp;факту первая программа&nbsp;- бакалавриат, поэтому в&nbsp;следующей итерации модели цифры по&nbsp;гостеприимству пересобираются.</p>
+      </div>
+    </div>
+
+    <!-- CS&AI ECONOMICS -->
+    <div class="pull">
+      <h3 class="mb-s">Компьютерные науки и&nbsp;ИИ</h3>
+      <p>Четыре программы запускаются последовательно с&nbsp;2027 по&nbsp;2030. К&nbsp;учебному году 2032/33 на&nbsp;четырех программах&nbsp;- 533&nbsp;человека одновременного набора.</p>
+      <table class="fintable">
+        <thead>
+          <tr>
+            <th style="text-align:left">Показатель</th>
+            <th>2027/28</th>
+            <th>2028/29</th>
+            <th>2029/30</th>
+            <th>2030/31</th>
+            <th>2031/32</th>
+            <th>2032/33</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Программ в&nbsp;наборе</td><td>1</td><td>2</td><td>3</td><td>4</td><td>4</td><td>4</td></tr>
+          <tr><td>Набор, чел.</td><td>28</td><td>77</td><td>142</td><td>297</td><td>419</td><td>533</td></tr>
+          <tr class="sub"><td>Средний чек, тыс. руб.</td><td>1&nbsp;100</td><td>1&nbsp;210</td><td>1&nbsp;331</td><td>1&nbsp;464</td><td>1&nbsp;611</td><td>1&nbsp;772</td></tr>
+          <tr><td>Образовательные доходы, млн&nbsp;руб.</td><td>30,8</td><td>93,5</td><td>189,3</td><td>434,6</td><td>674,6</td><td>944,5</td></tr>
+          <tr class="total"><td>Чистая прибыль, млн&nbsp;руб.</td><td>2,7</td><td>11,5</td><td>26,1</td><td>84,9</td><td>147,2</td><td>234,6</td></tr>
+        </tbody>
+      </table>
+      <p class="small mt-s">Кумулятивная выручка ИТ-вертикали за&nbsp;период&nbsp;- 2,37&nbsp;млрд&nbsp;руб. Cash-positive с&nbsp;первого года, ускоренный рост за&nbsp;счет последовательного запуска четырех программ.</p>
+      <p class="note">Расчёт ведётся от&nbsp;минимально безопасного первого набора в&nbsp;28&nbsp;человек. Это точка, рассчитанная по&nbsp;unit-экономике первого года с&nbsp;учётом стандартной отчисляемости 15&ndash;20% за&nbsp;четыре года: ниже этого уровня программа не&nbsp;окупает полный цикл бакалавриата. Все последующие годы масштабированы пропорционально базовому набору.</p>
+    </div>
+
+    <!-- HOSPITALITY ECONOMICS -->
+    <div class="pull">
+      <h3 class="mb-s">Гостеприимство и&nbsp;экономика впечатлений</h3>
+      <p>Бакалавриат с&nbsp;2027/28, магистратура с&nbsp;2029/30. К&nbsp;2032/33 на&nbsp;двух программах&nbsp;- 200&nbsp;человек одновременного набора.</p>
+      <table class="fintable">
+        <thead>
+          <tr>
+            <th style="text-align:left">Показатель</th>
+            <th>2027/28</th>
+            <th>2028/29</th>
+            <th>2029/30</th>
+            <th>2030/31</th>
+            <th>2031/32</th>
+            <th>2032/33</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Программ в&nbsp;наборе</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+          <tr><td>Набор, чел.</td><td>30</td><td>67</td><td>111</td><td>157</td><td>181</td><td>200</td></tr>
+          <tr class="sub"><td>Средний чек, тыс. руб.</td><td>1&nbsp;100</td><td>1&nbsp;210</td><td>1&nbsp;331</td><td>1&nbsp;464</td><td>1&nbsp;611</td><td>1&nbsp;772</td></tr>
+          <tr><td>Образовательные доходы, млн&nbsp;руб.</td><td>33,0</td><td>81,1</td><td>147,7</td><td>229,9</td><td>291,5</td><td>354,3</td></tr>
+          <tr class="total"><td>Чистая прибыль, млн&nbsp;руб.</td><td>3,9</td><td>11,6</td><td>21,3</td><td>41,7</td><td>58,5</td><td>75,8</td></tr>
+        </tbody>
+      </table>
+      <p class="small mt-s">Кумулятивная выручка вертикали гостеприимства за&nbsp;период&nbsp;- 1,14&nbsp;млрд&nbsp;руб. Маржинальность стабильно растет с&nbsp;12% в&nbsp;первый год до&nbsp;21% к&nbsp;шестому.</p>
+      <p class="note">Расчёт ведётся от&nbsp;минимально безопасного первого набора в&nbsp;30&nbsp;человек. Это точка, рассчитанная по&nbsp;unit-экономике первого года с&nbsp;учётом стандартной отчисляемости 15&ndash;20% за&nbsp;четыре года: ниже этого уровня программа не&nbsp;окупает полный цикл бакалавриата.</p>
+    </div>
+
+    <!-- SUMMARY CHART -->
+    <div class="pull">
+      <h3 class="mb-s">Что это дает в&nbsp;сумме</h3>
+      <div class="chart-frame">
+        <svg viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <!-- y axis lines and labels -->
+          <g font-family="Inter Tight" font-size="11" fill="#6a6a6a">
+            <line x1="60" y1="20" x2="980" y2="20" stroke="#ece9e2" stroke-width="1"/>
+            <line x1="60" y1="80" x2="980" y2="80" stroke="#ece9e2" stroke-width="1"/>
+            <line x1="60" y1="140" x2="980" y2="140" stroke="#ece9e2" stroke-width="1"/>
+            <line x1="60" y1="200" x2="980" y2="200" stroke="#ece9e2" stroke-width="1"/>
+            <line x1="60" y1="260" x2="980" y2="260" stroke="#0a0a0a" stroke-width="1"/>
+            <text x="50" y="24" text-anchor="end">1 400</text>
+            <text x="50" y="84" text-anchor="end">1 050</text>
+            <text x="50" y="144" text-anchor="end">700</text>
+            <text x="50" y="204" text-anchor="end">350</text>
+            <text x="50" y="264" text-anchor="end">0</text>
+            <text x="20" y="140" text-anchor="middle" font-size="10" transform="rotate(-90 20 140)" fill="#6a6a6a" letter-spacing="1.5">МЛН РУБ.</text>
+          </g>
+          <!-- stacked bars by year, two verticals per year -->
+
+          <g>
+            <g>
+              <rect x="110" y="254" width="100" height="6" fill="#143264"/>
+              <rect x="110" y="249" width="100" height="5" fill="#c8a857"/>
+              <text x="160" y="278" text-anchor="middle" font-size="11" fill="#0a0a0a" font-family="Inter Tight" font-weight="600">2027/28</text>
+              <text x="160" y="296" text-anchor="middle" font-size="11" fill="#6a6a6a" font-family="Inter Tight">64</text>
+            </g>
+            <g>
+              <rect x="250" y="246" width="100" height="14" fill="#143264"/>
+              <rect x="250" y="230" width="100" height="16" fill="#c8a857"/>
+              <text x="300" y="278" text-anchor="middle" font-size="11" fill="#0a0a0a" font-family="Inter Tight" font-weight="600">2028/29</text>
+              <text x="300" y="296" text-anchor="middle" font-size="11" fill="#6a6a6a" font-family="Inter Tight">175</text>
+            </g>
+            <g>
+              <rect x="390" y="235" width="100" height="25" fill="#143264"/>
+              <rect x="390" y="203" width="100" height="32" fill="#c8a857"/>
+              <text x="440" y="278" text-anchor="middle" font-size="11" fill="#0a0a0a" font-family="Inter Tight" font-weight="600">2029/30</text>
+              <text x="440" y="296" text-anchor="middle" font-size="11" fill="#6a6a6a" font-family="Inter Tight">337</text>
+            </g>
+            <g>
+              <rect x="530" y="221" width="100" height="39" fill="#143264"/>
+              <rect x="530" y="146" width="100" height="75" fill="#c8a857"/>
+              <text x="580" y="278" text-anchor="middle" font-size="11" fill="#0a0a0a" font-family="Inter Tight" font-weight="600">2030/31</text>
+              <text x="580" y="296" text-anchor="middle" font-size="11" fill="#6a6a6a" font-family="Inter Tight">664</text>
+            </g>
+            <g>
+              <rect x="670" y="210" width="100" height="50" fill="#143264"/>
+              <rect x="670" y="94" width="100" height="116" fill="#c8a857"/>
+              <text x="720" y="278" text-anchor="middle" font-size="11" fill="#0a0a0a" font-family="Inter Tight" font-weight="600">2031/32</text>
+              <text x="720" y="296" text-anchor="middle" font-size="11" fill="#6a6a6a" font-family="Inter Tight">966</text>
+            </g>
+            <g>
+              <rect x="810" y="199" width="100" height="61" fill="#143264"/>
+              <rect x="810" y="37" width="100" height="162" fill="#c8a857"/>
+              <text x="860" y="278" text-anchor="middle" font-size="11" fill="#0a0a0a" font-family="Inter Tight" font-weight="600">2032/33</text>
+              <text x="860" y="296" text-anchor="middle" font-size="11" fill="#6a6a6a" font-family="Inter Tight">1 299</text>
+            </g>
+          </g>
+        </svg>
+        <div class="legend">
+          <span><i style="background:#143264"></i>Гостеприимство</span>
+          <span><i style="background:#c8a857"></i>Компьютерные науки и&nbsp;ИИ</span>
+          <span style="color:var(--ink-mute);font-style:italic">Образовательные доходы по&nbsp;вертикалям, млн&nbsp;руб.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PROOF: BOTTOM-UP ASSUMPTIONS ============ -->
+<section id="proof">
+  <div class="wrap">
+    <div class="chapter-mark">
+      <div class="num">06</div>
+      <div class="ttl">Доказательство<span class="name">Что мы&nbsp;проверяем снизу вверх</span></div>
+    </div>
+    <div class="cols-2-wide">
+      <div>
+        <h2>Финансовый план держится на&nbsp;девяти допущениях. Каждое будем проверять.</h2>
+      </div>
+      <div>
+        <p class="lead">AB возражал против модели, собранной сверху вниз. Поэтому весь набор цифр в&nbsp;модели разложен на&nbsp;допущения, по&nbsp;которым на&nbsp;каждом этапе есть данные для&nbsp;проверки.</p>
+        <p>Допущения разделены по&nbsp;четырем блокам: рынок и&nbsp;спрос (есть ли&nbsp;аудитория), воронка набора (можем ли&nbsp;ее&nbsp;довести до&nbsp;оплаты), продукт и&nbsp;кадры (готова ли&nbsp;программа к&nbsp;запуску), партнеры и&nbsp;лицензирование (есть ли&nbsp;операционные условия).</p>
+      </div>
+    </div>
+
+    <div class="assump">
+      <div class="assump-head assump-row">
+        <div></div>
+        <div>Что доказываем</div>
+        <div>Как доказываем</div>
+        <div>Целевой показатель</div>
+      </div>
+      <div class="assump-row">
+        <div class="num">01</div>
+        <div class="name">Емкость рынка по&nbsp;каждой вертикали</div>
+        <div class="what">Внутренний отраслевой анализ: вакансии HeadHunter, открытые конкурсы конкурентов, данные о&nbsp;поступающих в&nbsp;ВШЭ&nbsp;ФКН и&nbsp;МГИМО.</div>
+        <div class="target">Q2 2026</div>
+      </div>
+      <div class="assump-row">
+        <div class="num">02</div>
+        <div class="name">Конверсия лид&nbsp;-&nbsp;заявка</div>
+        <div class="what">Воронка кампании 2026/27. Бенчмарк&nbsp;UU: 5&ndash;7% для&nbsp;теплой базы, 1&ndash;2% для&nbsp;холодного трафика.</div>
+        <div class="target">Q4 2026</div>
+      </div>
+      <div class="assump-row">
+        <div class="num">03</div>
+        <div class="name">Средний чек и&nbsp;ценовая эластичность</div>
+        <div class="what">Тест двух ценовых точек 1,1 и&nbsp;1,3&nbsp;млн&nbsp;руб./год. Замер по&nbsp;каждой точке.</div>
+        <div class="target">Q3 2026</div>
+      </div>
+      <div class="assump-row">
+        <div class="num">04</div>
+        <div class="name">Стоимость лида (CAC)</div>
+        <div class="what">Цифровой маркетинг VK, Telegram, ДОД на&nbsp;площадках партнеров. Плановый коридор&nbsp;- 45&ndash;65&nbsp;тыс. руб.</div>
+        <div class="target">Q3 2026</div>
+      </div>
+      <div class="assump-row">
+        <div class="num">05</div>
+        <div class="name">Наполняемость первых групп</div>
+        <div class="what">Запас по&nbsp;заявкам 5&ndash;7&times; от&nbsp;целевого набора&nbsp;- норма для&nbsp;премиального бакалавриата&nbsp;UU.</div>
+        <div class="target">Q1 2027</div>
+      </div>
+      <div class="assump-row">
+        <div class="num">06</div>
+        <div class="name">Доля каждого сегмента аудитории</div>
+        <div class="what">Анкеты при подаче, разбор воронки по&nbsp;каналам, портреты абитуриентов по&nbsp;двум сегментам гостеприимства и&nbsp;ИТ.</div>
+        <div class="target">Q4 2026</div>
+      </div>
+      <div class="assump-row">
+        <div class="num">07</div>
+        <div class="name">Готовность партнеров</div>
+        <div class="what">LOI с&nbsp;тремя якорными партнерами по&nbsp;каждой вертикали до&nbsp;запуска маркетинговой кампании.</div>
+        <div class="target">до Q3 2026</div>
+      </div>
+      <div class="assump-row">
+        <div class="num">08</div>
+        <div class="name">Кадровая база преподавателей</div>
+        <div class="what">5+&nbsp;контрактов на&nbsp;каждую программу. 70%&nbsp;- действующие практики индустрии.</div>
+        <div class="target">Q2 2026</div>
+      </div>
+      <div class="assump-row">
+        <div class="num">09</div>
+        <div class="name">Лицензирование и&nbsp;валидация ФГОС</div>
+        <div class="what">Подача документов в&nbsp;Рособрнадзор. Согласование учебного плана с&nbsp;федеральным образовательным стандартом.</div>
+        <div class="target">Q2 2026</div>
+      </div>
+    </div>
+
+    <p class="note">По&nbsp;каждому пункту у&nbsp;команды есть исполнитель. На&nbsp;контрольных точках кампании 2026 и&nbsp;2027 готовится отчет с&nbsp;фактическими цифрами против плановых.</p>
+  </div>
+</section>
+
+<!-- ============ MANAGED PILOT (formerly gates) ============ -->
+<section>
+  <div class="wrap">
+    <div class="chapter-mark">
+      <div class="num">07</div>
+      <div class="ttl">Контрольные точки<span class="name">Запуск как управляемая проверка гипотезы</span></div>
+    </div>
+    <div class="cols-2-wide">
+      <div>
+        <h2>Три контрольные точки между текущим моментом и&nbsp;первым набором. На&nbsp;каждой&nbsp;- решение: продолжать, корректировать или&nbsp;откладывать.</h2>
+      </div>
+      <div>
+        <p class="lead">Запуск двух вертикалей одновременно концентрирует риск. Поэтому переход к&nbsp;каждой следующей фазе условный: пока не&nbsp;закрыта предыдущая, движение не&nbsp;начинается.</p>
+        <p>Каждая точка имеет численный критерий, дату и&nbsp;ответственного. Это часть управленческой архитектуры проекта, а&nbsp;не&nbsp;ритуальный слайд.</p>
+      </div>
+    </div>
+
+    <div class="checks">
+      <div class="check">
+        <div class="check-tag">Точка 01</div>
+        <h4>Готовность содержания</h4>
+        <div class="check-when">июль 2026 &middot; портфельный ПК</div>
+        <p class="small">Учебные планы двух пилотных программ собраны, прошли независимую экспертизу и&nbsp;выносятся на&nbsp;июльский Продуктовый комитет вместе с&nbsp;заключениями маркетинга, финансов и&nbsp;AQ.</p>
+        <div class="check-crit">
+          <div class="label">Критерии</div>
+          <ul>
+            <li>Учебные планы программ собраны и&nbsp;утверждены</li>
+            <li>Два внешних эксперта подписали экспертное заключение</li>
+            <li>Контракты с&nbsp;5+&nbsp;ключевыми преподавателями</li>
+            <li>Подтверждение лицензирования ФГОС в&nbsp;работе</li>
+          </ul>
+        </div>
+        <div class="check-go"><strong>Решение Go:</strong> передача программ в&nbsp;маркетинг к&nbsp;октябрю 2026, открытие приема заявок на&nbsp;2027/28.</div>
+      </div>
+      <div class="check">
+        <div class="check-tag">Точка 02</div>
+        <h4>Готовность спроса</h4>
+        <div class="check-when">март 2027</div>
+        <p class="small">Воронка работает, заявки переходят в&nbsp;оплаты по&nbsp;плану.</p>
+        <div class="check-crit">
+          <div class="label">Критерии</div>
+          <ul>
+            <li>1&nbsp;200+ лидов по&nbsp;каждой программе</li>
+            <li>Конверсия лид&nbsp;-&nbsp;заявка не&nbsp;ниже&nbsp;5%</li>
+            <li>15+&nbsp;оплат по&nbsp;программе Прикладной информатики</li>
+            <li>20+&nbsp;оплат по&nbsp;программе Управление в&nbsp;гостеприимстве</li>
+            <li>CAC не&nbsp;превышает 65&nbsp;тыс. руб.</li>
+          </ul>
+        </div>
+        <div class="check-go"><strong>Решение Go:</strong> продолжение операционной подготовки. <strong>Stop:</strong> отложить запуск на&nbsp;год, пересборка программ.</div>
+      </div>
+      <div class="check">
+        <div class="check-tag">Точка 03</div>
+        <h4>Результат первого набора</h4>
+        <div class="check-when">июль 2027</div>
+        <p class="small">Программы стартовали или&nbsp;нет. Цифры набора подобраны из&nbsp;unit-экономики первого года: ниже&nbsp;них программа не&nbsp;окупается за&nbsp;четыре года даже при стандартной отчисляемости.</p>
+        <div class="check-crit">
+          <div class="label">Критерии</div>
+          <ul>
+            <li>Набор закрыт: &ge;&nbsp;28&nbsp;человек на&nbsp;ИТ и&nbsp;&ge;&nbsp;30&nbsp;на&nbsp;гостеприимство</li>
+            <li>Средний чек &ge;&nbsp;1,1&nbsp;млн&nbsp;руб./год</li>
+            <li>Доля партнерской воронки &ge;&nbsp;15%</li>
+            <li>Реальный CAC сошелся с&nbsp;плановым (&plusmn;30%)</li>
+          </ul>
+        </div>
+        <div class="check-go"><strong>Решение Go:</strong> запуск второй ИТ-программы в&nbsp;2028/29. <strong>Stop:</strong> вторая программа откладывается, фокус&nbsp;- на&nbsp;удержание первой когорты.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP 2026 ============ -->
+<section id="plan">
+  <div class="wrap">
+    <div class="chapter-mark">
+      <div class="num">08</div>
+      <div class="ttl">Дорожная карта<span class="name">Что делаем во&nbsp;2&ndash;4 кварталах 2026</span></div>
+    </div>
+    <div class="cols-2-wide">
+      <div>
+        <h2>2026&nbsp;- год упаковки, валидации и&nbsp;запуска воронки. Набора в&nbsp;2026 не&nbsp;будет, первый набор только в&nbsp;сентябре 2027.</h2>
+      </div>
+      <div>
+        <p class="lead">Все, что делается в&nbsp;ближайший год, идет в&nbsp;три направления: учебный контент, маркетинговая воронка и&nbsp;индустриальные партнерства. К&nbsp;концу 2026 года первая контрольная точка должна быть пройдена.</p>
+      </div>
+    </div>
+
+    <div class="quarters">
+      <div class="quarter">
+        <div class="q-num">Q2 2026 &middot; апрель&nbsp;-&nbsp;июнь</div>
+        <h4>Содержание и&nbsp;кадры</h4>
+        <ul>
+          <li>Финальные учебные планы двух пилотных программ</li>
+          <li>Контракты с&nbsp;ключевыми преподавателями: 5+&nbsp;по&nbsp;ИТ, 4+&nbsp;по&nbsp;гостеприимству</li>
+          <li>Подача документов на&nbsp;лицензирование ФГОС</li>
+          <li>Емкость рынка по&nbsp;каждой вертикали подтверждена данными</li>
+          <li>Заключения маркетинга, финансов и&nbsp;AQ к&nbsp;июльскому ПК</li>
+        </ul>
+      </div>
+      <div class="quarter">
+        <div class="q-num">Q3 2026 &middot; июль&nbsp;-&nbsp;сентябрь</div>
+        <h4>Валидация и&nbsp;партнерства</h4>
+        <ul>
+          <li>Июльский ПК: портфельное решение по&nbsp;двум вертикалям</li>
+          <li>Внешняя экспертиза учебных планов: 2&nbsp;CTO и&nbsp;2&nbsp;индустриала</li>
+          <li>LOI с&nbsp;якорными партнерами подписаны до&nbsp;октября</li>
+          <li>Сайты программ и&nbsp;посадочные страницы запущены</li>
+          <li>Тест двух ценовых точек, замер CAC</li>
+        </ul>
+      </div>
+      <div class="quarter">
+        <div class="q-num">Q4 2026 &middot; октябрь&nbsp;-&nbsp;декабрь</div>
+        <h4>Маркетинговая кампания</h4>
+        <ul>
+          <li>Передача программ в&nbsp;маркетинг в&nbsp;октябре</li>
+          <li>Полноценная рекламная кампания запущена</li>
+          <li>15+&nbsp;кейсов в&nbsp;индустриальной коммуникации</li>
+          <li>День открытых дверей по&nbsp;ИТ и&nbsp;по&nbsp;гостеприимству</li>
+          <li>Прием заявок открыт, 200+&nbsp;лидов в&nbsp;CRM, конверсия замеряется</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM AND BUDGET ============ -->
+<section>
+  <div class="wrap">
+    <div class="chapter-mark">
+      <div class="num">09</div>
+      <div class="ttl">Ресурсы<span class="name">Команда и&nbsp;бюджет 2026</span></div>
+    </div>
+    <div class="cols-2-wide">
+      <div>
+        <h2>Запуск двух вертикалей не&nbsp;требует капитальных вложений. Стартовый бюджет&nbsp;- 6,8&nbsp;млн&nbsp;руб., все расходы в&nbsp;OpEx.</h2>
+      </div>
+      <div>
+        <p class="lead">Программы запускаются на&nbsp;существующей инфраструктуре университета. Нагрузка на&nbsp;учебный отдел укладывается в&nbsp;текущую штатную структуру.</p>
+        <p>Стартовый бюджет покрывает упаковку двух программ, рекламную кампанию первого года и&nbsp;партнерскую работу. Возврат начинается с&nbsp;первого набора 2027/28.</p>
+      </div>
+    </div>
+
+    <h3 class="mb-s mt-l">Команда проекта</h3>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="role">Руководитель проекта</div>
+        <div class="name">Запуск двух вертикалей</div>
+        <div class="focus">Координация с&nbsp;факультетами, подписание партнерских соглашений, операционная ответственность за&nbsp;даты контрольных точек.</div>
+      </div>
+      <div class="team-card">
+        <div class="role">Образовательная модель</div>
+        <div class="name">Дизайн программ</div>
+        <div class="focus">Учебные планы по&nbsp;модели CET. Валидация содержания. Подбор и&nbsp;контракты с&nbsp;преподавателями. Координация с&nbsp;ФГОС.</div>
+      </div>
+      <div class="team-card">
+        <div class="role">Маркетинг и&nbsp;воронка</div>
+        <div class="name">Лидогенерация</div>
+        <div class="focus">Бренд-коммуникация, цифровые каналы, дни открытых дверей, конверсия. Тест ценовых точек.</div>
+      </div>
+      <div class="team-card">
+        <div class="role">Партнерства и&nbsp;карьерные треки</div>
+        <div class="name">Индустриальные контакты</div>
+        <div class="focus">Сбер, Яндекс, Cosmos, Mantera, Сириус, ВДНХ. Резиденции, стажировки, гранты, проектные брифы.</div>
+      </div>
+    </div>
+
+    <h3 class="mb-s mt-l">Бюджет 2026</h3>
+    <div class="budget">
+      <div class="budget-row head">
+        <div>Статья</div>
+        <div>Что включает</div>
+        <div style="text-align:right">Сумма, млн&nbsp;руб.</div>
+      </div>
+      <div class="budget-row">
+        <div class="item">Упаковка программ</div>
+        <div class="desc">Дизайн сайтов, печатные материалы, валидация содержания внешним советом, фотопродакшн, видеовизитки преподавателей.</div>
+        <div class="sum">0,7</div>
+      </div>
+      <div class="budget-row">
+        <div class="item">Цифровой маркетинг</div>
+        <div class="desc">Реклама в&nbsp;VK, Telegram, Дзен. Контент-маркетинг через индустриальных партнеров. SEO-инфраструктура.</div>
+        <div class="sum">3,8</div>
+      </div>
+      <div class="budget-row">
+        <div class="item">Офлайн-события</div>
+        <div class="desc">Два дня открытых дверей, индустриальные митапы, шоукейсы партнеров. Аренда внешних площадок.</div>
+        <div class="sum">1,4</div>
+      </div>
+      <div class="budget-row">
+        <div class="item">Партнерская воронка</div>
+        <div class="desc">Программа &laquo;Университет в&nbsp;школе&raquo; для&nbsp;ИТ и&nbsp;гостеприимства. Школьные хакатоны и&nbsp;летние интенсивы.</div>
+        <div class="sum">0,9</div>
+      </div>
+      <div class="budget-row total">
+        <div class="item">Итого 2026</div>
+        <div class="desc">Без капитальных затрат. Все расходы в&nbsp;OpEx. Возврат начинается с&nbsp;первого набора 2027/28.</div>
+        <div class="sum">6,8</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="no-border" style="border-top:1px solid var(--ink);padding:96px 0">
+  <div class="wrap-narrow">
+    <p class="quote">Две новые вертикали проверяются как гипотеза. Мы&nbsp;не&nbsp;просим утвердить пятилетний рост. Мы&nbsp;показываем, как именно проверяем, что направления есть, кто за&nbsp;них платит и&nbsp;где граница устойчивости.</p>
+
+    <div class="mt-l cols-2">
+      <div>
+        <h4 class="mb-s">К&nbsp;обсуждению на&nbsp;совещании</h4>
+        <p>Бюджет 6,8&nbsp;млн&nbsp;руб. на&nbsp;2026 год. Архитектура управляемого пилота с&nbsp;тремя контрольными точками. Доступ к&nbsp;четырем индустриальным контактам уровня CTO/COO для&nbsp;внешней валидации программ.</p>
+      </div>
+      <div>
+        <h4 class="mb-s">Когда возвращаемся с&nbsp;цифрами</h4>
+        <p>Q3 2026 &ndash; контрольная точка 01: упаковка, валидация, готовность воронки. Q1 2027 &ndash; контрольная точка 02: воронка переходит в&nbsp;оплаты. Q3 2027 &ndash; контрольная точка 03: первый набор и&nbsp;решение по&nbsp;второй программе ИТ-вертикали.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div class="col">
+        <h5>Документ</h5>
+        <p>Стратегический проект. Две новые вертикали высшего образования&nbsp;UU. Материал к&nbsp;совещанию.</p>
+      </div>
+      <div class="col">
+        <h5>Версия</h5>
+        <p>Май 2026, версия 3.0. Документ обновляется по&nbsp;контрольным точкам пилота.</p>
+      </div>
+      <div class="col">
+        <h5>Следующая итерация</h5>
+        <p>Q3 2026 &ndash; после прохождения контрольной точки 01: уточненные цифры воронки, статус партнеров, скорректированная финмодель.</p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Universal University &middot; 2026</span>
+      <span>Внутренний документ</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
